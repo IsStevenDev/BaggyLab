@@ -1,6 +1,10 @@
 import { initMenu } from "./menu.js";
 import { initFilters, applyFilter } from "./filters.js";
 import { initCountdown } from "./countdown.js";
+import { initDialogs, openDialog } from "./dialogs.js";
+import { initCartView } from "./cart-view.js";
+import { initCheckout } from "./checkout.js";
+import { initContact } from "./contact.js";
 import { addItem, getTotals, MAX_QTY } from "./cart.js";
 import { showToast } from "./toast.js";
 
@@ -82,6 +86,11 @@ document.addEventListener("click", (event) => {
     return;
   }
 
+  if (action === "close-dialog") {
+    trigger.closest("dialog")?.close();
+    return;
+  }
+
   if (action === "go-top") {
     event.preventDefault();
     applyFilter("todos");
@@ -98,10 +107,9 @@ document.addEventListener("click", (event) => {
     return;
   }
 
-  /* Los diálogos se conectan en la siguiente etapa; mientras tanto
-     se evita que el enlace cambie la URL sin hacer nada */
   if (open) {
     event.preventDefault();
+    openDialog(open);
     return;
   }
 
@@ -118,4 +126,8 @@ document.addEventListener("cart:change", (event) => {
 initMenu();
 initFilters();
 initCountdown();
+initDialogs();
+initCartView();
+initCheckout();
+initContact();
 renderCartBadge(getTotals());

@@ -102,6 +102,7 @@ button:focus-visible {
 a.logo {
   display: inline-flex;
   align-items: center;
+  gap: 0.3em;
   min-height: var(--touch-min);
 }
 

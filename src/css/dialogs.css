@@ -1,0 +1,399 @@
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
+/* Nunca se declara display en .dialog: un display propio haría visible el
+   diálogo aunque esté cerrado */
+.dialog {
+  width: min(100% - 32px, 480px);
+  max-height: min(92dvh, 760px);
+  padding: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  color: var(--color-text);
+  color-scheme: dark;
+  background-color: var(--color-surface);
+}
+
+.dialog::backdrop {
+  background-color: rgba(5, 5, 10, 0.72);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+/* En móvil el diálogo se comporta como una hoja que sube desde abajo */
+@media (max-width: 599.98px) {
+  .dialog {
+    width: 100%;
+    max-width: 100%;
+    max-height: 92dvh;
+    margin: auto 0 0;
+    border-bottom: 0;
+    border-radius: 20px 20px 0 0;
+  }
+}
+
+.dialog__header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 68px;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+}
+
+.dialog__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.375rem;
+}
+
+.dialog__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--touch-min);
+  height: var(--touch-min);
+  border: 0;
+  border-radius: var(--radius-btn);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  cursor: pointer;
+  transition: background-color 0.18s ease;
+}
+
+.dialog__close:hover {
+  background-color: #252532;
+}
+
+.dialog__view,
+.dialog__body {
+  padding: 20px 20px 24px;
+}
+
+.dialog__lead {
+  margin-bottom: 16px;
+  color: var(--color-muted);
+}
+
+.dialog__alt {
+  margin-top: 16px;
+  color: var(--color-muted);
+  font-size: 0.9375rem;
+}
+
+.dialog__link {
+  padding: 0;
+  border: 0;
+  font: inherit;
+  color: var(--color-accent);
+  text-decoration: underline;
+  background: none;
+  cursor: pointer;
+}
+
+.dialog__body p {
+  color: var(--color-muted);
+}
+
+.info-list {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.info-list li {
+  padding: 12px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  font-size: 0.9375rem;
+  color: var(--color-muted);
+  background-color: var(--color-surface-alt);
+}
+
+.info-list strong {
+  color: var(--color-text);
+}
+
+.cart__empty {
+  padding: 24px 0;
+  text-align: center;
+  color: var(--color-muted);
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "info remove"
+    "qty  qty";
+  align-items: center;
+  gap: 10px 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cart-item__info {
+  grid-area: info;
+  min-width: 0;
+}
+
+.cart-item__qty {
+  grid-area: qty;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cart-item__remove {
+  grid-area: remove;
+}
+
+.cart-item__name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.cart-item__price {
+  margin-top: 2px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.cart-item__step {
+  width: var(--touch-min);
+  height: var(--touch-min);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  font-size: 1.25rem;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  cursor: pointer;
+}
+
+.cart-item__step[aria-disabled="true"] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.cart-item__count {
+  min-width: 32px;
+  text-align: center;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.cart-item__remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--touch-min);
+  height: var(--touch-min);
+  border: 0;
+  border-radius: 12px;
+  color: var(--color-muted);
+  background: none;
+  cursor: pointer;
+  transition: color 0.18s ease;
+}
+
+.cart-item__remove:hover {
+  color: #ff8a9b;
+}
+
+.summary {
+  display: grid;
+  gap: 8px;
+  margin-block: 16px;
+}
+
+.summary__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 0.9375rem;
+  color: var(--color-muted);
+}
+
+.summary__row dd {
+  margin: 0;
+}
+
+.summary__row--total {
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--color-text);
+}
+
+.cart__hint {
+  margin-bottom: 16px;
+  font-size: 0.875rem;
+  color: var(--color-accent);
+}
+
+.form {
+  display: grid;
+  gap: 16px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+/* 1rem evita que Safari en iPhone haga zoom al enfocar el campo */
+.field__input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  transition: border-color 0.18s ease;
+}
+
+.field__input--area {
+  min-height: 110px;
+  padding-block: 12px;
+  resize: vertical;
+}
+
+.field__input:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-color: var(--color-accent);
+}
+
+.field__input[aria-invalid="true"] {
+  border-color: #ff6b81;
+}
+
+.field__error {
+  font-size: 0.8125rem;
+  color: #ff8a9b;
+}
+
+.btn--ghost {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--color-text);
+  background-color: transparent;
+}
+
+.btn--ghost:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.dialog__view--center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-block: 32px 24px;
+  text-align: center;
+}
+
+.dialog__view--center .btn {
+  margin-top: 12px;
+}
+
+.confirm__icon {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  color: var(--color-bg);
+  background-color: var(--color-accent);
+  box-shadow: 0 0 0 10px rgba(0, 229, 255, 0.12);
+}
+
+.confirm__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.confirm__title:focus {
+  outline: none;
+}
+
+.confirm__text {
+  color: var(--color-muted);
+}
+
+.confirm__text strong {
+  color: var(--color-text);
+}
+
+.confirm__code {
+  font-family: var(--font-display);
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .dialog[open] {
+    --rise: 24px;
+    animation: rise 0.32s var(--ease-out) both;
+  }
+
+  .dialog[open]::backdrop {
+    animation: fade-in 0.3s ease both;
+  }
+
+  .confirm__icon {
+    animation: pop 0.45s var(--ease-out) both;
+  }
+
+  /* El trazo del check se dibuja solo con movimiento activado; con movimiento
+     reducido el dasharray no se aplica y el check se ve completo */
+  .confirm__icon path {
+    stroke-dasharray: 24;
+    stroke-dashoffset: 24;
+    animation: draw 0.5s 0.15s ease-out forwards;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @keyframes pop {
+    from {
+      opacity: 0;
+      transform: scale(0.6);
+    }
+  }
+
+  @keyframes draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+}
