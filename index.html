@@ -14,14 +14,18 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="src/css/styles.css" />
+    <link rel="stylesheet" href="src/css/motion.css" />
+    <link rel="stylesheet" href="src/css/interactive.css" />
+    <link rel="stylesheet" href="src/css/dialogs.css" />
+    <script type="module" src="src/js/main.js"></script>
   </head>
   <body>
     <header class="site-header">
       <!--
       El checkbox es el control real del menú: recibe el foco del teclado
-      aunque esté oculto visualmente. El label abre y cierra el panel,
-      así el menú funciona sin JavaScript.
+      aunque esté oculto visualmente. El label abre y cierra el panel.
+      Al navegar, menu.js lo desmarca para cerrar el panel.
     -->
       <input
         class="menu-toggle"
@@ -31,7 +35,33 @@
       />
 
       <div class="site-header__inner container">
-        <a class="logo" href="#">BAGGY <span class="logo__accent">LAB</span></a>
+        <a class="logo" href="#" data-action="go-top"
+          >BAGGY <span class="logo__accent">LAB</span></a
+        >
+
+        <button
+          class="cart-btn"
+          type="button"
+          data-open="cart"
+          aria-label="Abrir carrito"
+        >
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M6 8h12l-1 12H7L6 8z" />
+            <path d="M9 8V6a3 3 0 0 1 6 0v2" />
+          </svg>
+          <span class="cart-btn__count" data-cart-count hidden>0</span>
+        </button>
 
         <label
           class="site-header__menu-btn"
@@ -55,19 +85,23 @@
 
         <nav class="site-header__nav" aria-label="Navegación principal">
           <ul class="site-header__nav-list">
-            <li><a href="#catalogo">Nuevos ingresos</a></li>
-            <li><a href="#">Mujer</a></li>
-            <li><a href="#">Hombre</a></li>
+            <li>
+              <a href="#catalogo" data-filter="nuevo">Nuevos ingresos</a>
+            </li>
+            <li><a href="#catalogo" data-filter="mujer">Mujer</a></li>
+            <li><a href="#catalogo" data-filter="hombre">Hombre</a></li>
             <li><a href="#ofertas">Ofertas</a></li>
-            <li><a href="#">Calzado y gorras</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li>
+              <a href="#catalogo" data-filter="calzado">Calzado y gorras</a>
+            </li>
+            <li><a href="#contacto" data-open="contacto">Contacto</a></li>
           </ul>
         </nav>
       </div>
 
       <nav class="menu-panel" aria-label="Menú desplegado">
         <div class="menu-panel__header">
-          <a class="logo" href="#"
+          <a class="logo" href="#" data-action="go-top"
             >BAGGY <span class="logo__accent">LAB</span></a
           >
           <label
@@ -93,7 +127,7 @@
 
         <ul class="menu-panel__list">
           <li class="menu-panel__item">
-            <a class="menu-panel__link" href="#catalogo">
+            <a class="menu-panel__link" href="#catalogo" data-filter="nuevo">
               <span class="menu-panel__text">Nuevos ingresos</span>
               <span class="chip chip--solid menu-panel__badge">NUEVO</span>
               <svg
@@ -114,7 +148,7 @@
             </a>
           </li>
           <li class="menu-panel__item">
-            <a class="menu-panel__link" href="#">
+            <a class="menu-panel__link" href="#catalogo" data-filter="mujer">
               <span class="menu-panel__text">Mujer</span>
               <svg
                 class="menu-panel__chevron"
@@ -134,7 +168,7 @@
             </a>
           </li>
           <li class="menu-panel__item">
-            <a class="menu-panel__link" href="#">
+            <a class="menu-panel__link" href="#catalogo" data-filter="hombre">
               <span class="menu-panel__text">Hombre</span>
               <svg
                 class="menu-panel__chevron"
@@ -175,7 +209,7 @@
             </a>
           </li>
           <li class="menu-panel__item">
-            <a class="menu-panel__link" href="#">
+            <a class="menu-panel__link" href="#catalogo" data-filter="calzado">
               <span class="menu-panel__text">Calzado y gorras</span>
               <svg
                 class="menu-panel__chevron"
@@ -195,7 +229,7 @@
             </a>
           </li>
           <li class="menu-panel__item">
-            <a class="menu-panel__link" href="#">
+            <a class="menu-panel__link" href="#contacto" data-open="contacto">
               <span class="menu-panel__text">Contacto</span>
               <svg
                 class="menu-panel__chevron"
@@ -217,7 +251,13 @@
         </ul>
 
         <div class="menu-panel__footer">
-          <a class="btn btn--primary btn--block" href="#">Ver mi carrito</a>
+          <button
+            class="btn btn--primary btn--block"
+            type="button"
+            data-open="cart"
+          >
+            Ver mi carrito
+          </button>
           <p class="menu-panel__note">Envíos a toda Colombia</p>
         </div>
       </nav>
@@ -245,11 +285,44 @@
             <p class="hero__media-caption">Foto de campaña</p>
           </div>
 
-          <a class="btn btn--primary btn--block hero__cta" href="#catalogo"
+          <a
+            class="btn btn--primary btn--block hero__cta"
+            href="#catalogo"
+            data-filter="todos"
             >Ver colección</a
           >
         </div>
       </section>
+
+      <!--
+      Franja decorativa: el segundo grupo es una copia exacta del primero para
+      que el bucle sea continuo. Se oculta a lectores de pantalla porque el
+      contenido ya aparece en otras partes de la página.
+    -->
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <ul class="marquee__group">
+            <li class="marquee__item">Envíos a toda Colombia</li>
+            <li class="marquee__item">Drop 01 disponible</li>
+            <li class="marquee__item">Hasta -30% en ofertas</li>
+            <li class="marquee__item">Baggy, oversize, Y2K</li>
+            <li class="marquee__item">Envíos a toda Colombia</li>
+            <li class="marquee__item">Drop 01 disponible</li>
+            <li class="marquee__item">Hasta -30% en ofertas</li>
+            <li class="marquee__item">Baggy, oversize, Y2K</li>
+          </ul>
+          <ul class="marquee__group">
+            <li class="marquee__item">Envíos a toda Colombia</li>
+            <li class="marquee__item">Drop 01 disponible</li>
+            <li class="marquee__item">Hasta -30% en ofertas</li>
+            <li class="marquee__item">Baggy, oversize, Y2K</li>
+            <li class="marquee__item">Envíos a toda Colombia</li>
+            <li class="marquee__item">Drop 01 disponible</li>
+            <li class="marquee__item">Hasta -30% en ofertas</li>
+            <li class="marquee__item">Baggy, oversize, Y2K</li>
+          </ul>
+        </div>
+      </div>
 
       <section class="offers section" id="ofertas">
         <div class="container">
@@ -258,8 +331,41 @@
             <span class="chip chip--solid">HASTA -30%</span>
           </div>
 
+          <div class="offers__timer">
+            <p class="offers__timer-text">Las ofertas terminan en</p>
+            <div
+              class="countdown"
+              role="timer"
+              aria-label="Tiempo restante de las ofertas"
+              data-countdown
+              data-countdown-end="2026-11-30T23:59:59-05:00"
+            >
+              <div class="countdown__unit">
+                <span class="countdown__value" data-unit="days">00</span>
+                <span class="countdown__label">días</span>
+              </div>
+              <div class="countdown__unit">
+                <span class="countdown__value" data-unit="hours">00</span>
+                <span class="countdown__label">horas</span>
+              </div>
+              <div class="countdown__unit">
+                <span class="countdown__value" data-unit="minutes">00</span>
+                <span class="countdown__label">min</span>
+              </div>
+              <div class="countdown__unit">
+                <span class="countdown__value" data-unit="seconds">00</span>
+                <span class="countdown__label">seg</span>
+              </div>
+            </div>
+          </div>
+
           <div class="offers__grid">
-            <article class="offer-card grad--hoodie">
+            <article
+              class="offer-card grad--hoodie"
+              data-id="hoodie-oferta"
+              data-name="Hoodie oversize (oferta)"
+              data-price="97900"
+            >
               <div class="offer-card__media">
                 <span class="chip chip--solid offer-card__badge">-30%</span>
                 <span class="offer-card__placeholder">Foto hoodie</span>
@@ -271,13 +377,19 @@
                 <button
                   class="btn btn--primary btn--sm btn--block"
                   type="button"
+                  data-action="add-to-cart"
                 >
                   Agregar
                 </button>
               </div>
             </article>
 
-            <article class="offer-card grad--gorra">
+            <article
+              class="offer-card grad--gorra"
+              data-id="gorra-oferta"
+              data-name="Gorra trucker (oferta)"
+              data-price="41900"
+            >
               <div class="offer-card__media">
                 <span class="chip chip--solid offer-card__badge">-30%</span>
                 <span class="offer-card__placeholder">Foto gorra</span>
@@ -289,6 +401,7 @@
                 <button
                   class="btn btn--primary btn--sm btn--block"
                   type="button"
+                  data-action="add-to-cart"
                 >
                   Agregar
                 </button>
@@ -302,11 +415,62 @@
         <div class="container">
           <div class="section-head">
             <h2 class="section-head__title">Todo el drop</h2>
-            <p class="section-head__meta">8 productos</p>
+            <p class="section-head__meta" data-product-count aria-live="polite">
+              8 productos
+            </p>
+          </div>
+
+          <div class="filters" role="group" aria-label="Filtrar productos">
+            <button
+              class="filters__chip"
+              type="button"
+              data-filter="todos"
+              aria-pressed="true"
+            >
+              Todos
+            </button>
+            <button
+              class="filters__chip"
+              type="button"
+              data-filter="nuevo"
+              aria-pressed="false"
+            >
+              Nuevos
+            </button>
+            <button
+              class="filters__chip"
+              type="button"
+              data-filter="mujer"
+              aria-pressed="false"
+            >
+              Mujer
+            </button>
+            <button
+              class="filters__chip"
+              type="button"
+              data-filter="hombre"
+              aria-pressed="false"
+            >
+              Hombre
+            </button>
+            <button
+              class="filters__chip"
+              type="button"
+              data-filter="calzado"
+              aria-pressed="false"
+            >
+              Calzado y gorras
+            </button>
           </div>
 
           <div class="catalog__grid">
-            <article class="product-card grad--camiseta">
+            <article
+              class="product-card grad--camiseta"
+              data-id="camiseta-anime"
+              data-name="Camiseta oversize anime"
+              data-price="89900"
+              data-tags="unisex ropa nuevo"
+            >
               <div class="product-card__media">
                 <span class="chip chip--tag product-card__tag">NUEVO</span>
                 <span class="product-card__placeholder">Foto: camiseta</span>
@@ -320,13 +484,20 @@
                 <button
                   class="btn btn--primary btn--block product-card__btn"
                   type="button"
+                  data-action="add-to-cart"
                 >
                   Agregar al carrito
                 </button>
               </div>
             </article>
 
-            <article class="product-card grad--baggy">
+            <article
+              class="product-card grad--baggy"
+              data-id="baggy-jean"
+              data-name="Baggy jean Y2K"
+              data-price="159900"
+              data-tags="mujer ropa"
+            >
               <div class="product-card__media">
                 <span class="chip chip--tag product-card__tag">MUJER</span>
                 <span class="product-card__placeholder">Foto: baggy jean</span>
@@ -340,13 +511,20 @@
                 <button
                   class="btn btn--primary btn--block product-card__btn"
                   type="button"
+                  data-action="add-to-cart"
                 >
                   Agregar al carrito
                 </button>
               </div>
             </article>
 
-            <article class="product-card grad--cargo">
+            <article
+              class="product-card grad--cargo"
+              data-id="pantalon-cargo"
+              data-name="Pantalón cargo"
+              data-price="149900"
+              data-tags="hombre ropa"
+            >
               <div class="product-card__media">
                 <span class="chip chip--tag product-card__tag">HOMBRE</span>
                 <span class="product-card__placeholder"
@@ -362,13 +540,20 @@
                 <button
                   class="btn btn--primary btn--block product-card__btn"
                   type="button"
+                  data-action="add-to-cart"
                 >
                   Agregar al carrito
                 </button>
               </div>
             </article>
 
-            <article class="product-card grad--hoodie">
+            <article
+              class="product-card grad--hoodie"
+              data-id="hoodie-oversize"
+              data-name="Hoodie oversize"
+              data-price="139900"
+              data-tags="unisex ropa"
+            >
               <div class="product-card__media">
                 <span class="chip chip--tag product-card__tag">-30%</span>
                 <span class="product-card__placeholder">Foto: hoodie</span>
@@ -382,13 +567,20 @@
                 <button
                   class="btn btn--primary btn--block product-card__btn"
                   type="button"
+                  data-action="add-to-cart"
                 >
                   Agregar al carrito
                 </button>
               </div>
             </article>
 
-            <article class="product-card grad--gorra">
+            <article
+              class="product-card grad--gorra"
+              data-id="gorra-trucker"
+              data-name="Gorra trucker con parche"
+              data-price="59900"
+              data-tags="unisex calzado"
+            >
               <div class="product-card__media">
                 <span class="chip chip--tag product-card__tag">-30%</span>
                 <span class="product-card__placeholder">Foto: gorra</span>
@@ -402,13 +594,20 @@
                 <button
                   class="btn btn--primary btn--block product-card__btn"
                   type="button"
+                  data-action="add-to-cart"
                 >
                   Agregar al carrito
                 </button>
               </div>
             </article>
 
-            <article class="product-card grad--tenis">
+            <article
+              class="product-card grad--tenis"
+              data-id="tenis-chunky"
+              data-name="Tenis chunky"
+              data-price="229900"
+              data-tags="unisex calzado"
+            >
               <div class="product-card__media">
                 <span class="chip chip--tag product-card__tag">TENDENCIA</span>
                 <span class="product-card__placeholder">Foto: tenis</span>
@@ -422,13 +621,20 @@
                 <button
                   class="btn btn--primary btn--block product-card__btn"
                   type="button"
+                  data-action="add-to-cart"
                 >
                   Agregar al carrito
                 </button>
               </div>
             </article>
 
-            <article class="product-card grad--medias">
+            <article
+              class="product-card grad--medias"
+              data-id="medias-altas"
+              data-name="Medias altas (pack x3)"
+              data-price="24900"
+              data-tags="unisex calzado"
+            >
               <div class="product-card__media">
                 <span class="chip chip--tag product-card__tag">PACK x3</span>
                 <span class="product-card__placeholder">Foto: medias</span>
@@ -442,13 +648,20 @@
                 <button
                   class="btn btn--primary btn--block product-card__btn"
                   type="button"
+                  data-action="add-to-cart"
                 >
                   Agregar al carrito
                 </button>
               </div>
             </article>
 
-            <article class="product-card grad--bomber">
+            <article
+              class="product-card grad--bomber"
+              data-id="bomber-y2k"
+              data-name="Bomber Y2K"
+              data-price="199900"
+              data-tags="unisex ropa nuevo"
+            >
               <div class="product-card__media">
                 <span class="chip chip--tag product-card__tag">NUEVO</span>
                 <span class="product-card__placeholder">Foto: bomber</span>
@@ -462,6 +675,7 @@
                 <button
                   class="btn btn--primary btn--block product-card__btn"
                   type="button"
+                  data-action="add-to-cart"
                 >
                   Agregar al carrito
                 </button>
@@ -483,21 +697,47 @@
 
         <div class="site-footer__columns">
           <ul class="site-footer__list">
-            <li><a href="#">Tienda</a></li>
+            <li><a href="#catalogo" data-filter="todos">Tienda</a></li>
             <li><a href="#ofertas">Ofertas</a></li>
-            <li><a href="#catalogo">Nuevos ingresos</a></li>
+            <li>
+              <a href="#catalogo" data-filter="nuevo">Nuevos ingresos</a>
+            </li>
           </ul>
           <ul class="site-footer__list">
-            <li><a href="#">Envíos</a></li>
-            <li><a href="#">Cambios</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li><a href="#envios" data-open="envios">Envíos</a></li>
+            <li><a href="#cambios" data-open="cambios">Cambios</a></li>
+            <li><a href="#contacto" data-open="contacto">Contacto</a></li>
           </ul>
         </div>
 
         <ul class="site-footer__social">
-          <li><a class="site-footer__pill" href="#">Instagram</a></li>
-          <li><a class="site-footer__pill" href="#">TikTok</a></li>
-          <li><a class="site-footer__pill" href="#">WhatsApp</a></li>
+          <li>
+            <a
+              class="site-footer__pill"
+              href="https://www.instagram.com/stivsitoo/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Instagram</a
+            >
+          </li>
+          <li>
+            <a
+              class="site-footer__pill"
+              href="https://tiktok.com/@TU_USUARIO"
+              target="_blank"
+              rel="noopener noreferrer"
+              >TikTok</a
+            >
+          </li>
+          <li>
+            <a
+              class="site-footer__pill"
+              href="https://wa.me/573192689532"
+              target="_blank"
+              rel="noopener noreferrer"
+              >WhatsApp</a
+            >
+          </li>
         </ul>
 
         <div class="site-footer__legal">
@@ -505,5 +745,150 @@
         </div>
       </div>
     </footer>
+
+    <dialog class="dialog" id="dialog-cart" aria-labelledby="cart-title">
+      <div class="dialog__panel">
+        <header class="dialog__header">
+          <h2 class="dialog__title" id="cart-title">Tu carrito</h2>
+          <button
+            class="dialog__close"
+            type="button"
+            data-action="close-dialog"
+            aria-label="Cerrar carrito"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+        </header>
+
+        <section class="dialog__view" data-view="cart">
+          <p class="cart__empty" data-cart-empty>
+            Tu carrito está vacío. Agrega algo del drop para empezar.
+          </p>
+          <ul class="cart__list" data-cart-list></ul>
+          <div class="cart__summary" data-cart-summary>
+            <dl class="summary">
+              <div class="summary__row">
+                <dt>Subtotal</dt>
+                <dd data-summary="subtotal"></dd>
+              </div>
+              <div class="summary__row">
+                <dt>Envío</dt>
+                <dd data-summary="shipping"></dd>
+              </div>
+              <div class="summary__row summary__row--total">
+                <dt>Total</dt>
+                <dd data-summary="total"></dd>
+              </div>
+            </dl>
+            <p class="cart__hint" data-cart-hint></p>
+            <button
+              class="btn btn--primary btn--block"
+              type="button"
+              data-action="go-checkout"
+            >
+              Finalizar compra
+            </button>
+          </div>
+        </section>
+
+        <section class="dialog__view" data-view="checkout" hidden>
+          <form class="form" id="form-checkout" novalidate>
+            <div class="field">
+              <label class="field__label" for="co-nombre"
+                >Nombre completo</label
+              >
+              <input
+                class="field__input"
+                id="co-nombre"
+                name="nombre"
+                type="text"
+                autocomplete="name"
+                aria-describedby="co-nombre-error"
+                required
+              />
+              <p
+                class="field__error"
+                id="co-nombre-error"
+                data-error-for="nombre"
+                hidden
+              ></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="co-telefono">Celular</label>
+              <input
+                class="field__input"
+                id="co-telefono"
+                name="telefono"
+                type="tel"
+                inputmode="numeric"
+                autocomplete="tel"
+                placeholder="3001234567"
+                aria-describedby="co-telefono-error"
+                required
+              />
+              <p
+                class="field__error"
+                id="co-telefono-error"
+                data-error-for="telefono"
+                hidden
+              ></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="co-ciudad">Ciudad</label>
+              <input
+                class="field__input"
+                id="co-ciudad"
+                name="ciudad"
+                type="text"
+                autocomplete="address-level2"
+                aria-describedby="co-ciudad-error"
+                required
+              />
+              <p
+                class="field__error"
+                id="co-ciudad-error"
+                data-error-for="ciudad"
+                hidden
+              ></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="co-direccion">Dirección</label>
+              <input
+                class="field__input"
+                id="co-direccion"
+                name="direccion"
+                type="text"
+                autocomplete="street-address"
+                aria-describedby="co-direccion-error"
+                required
+              />
+              <p
+                class="field__error"
+                id="co-direccion-error"
+                data-error-for="direccion"
+                hidden
+              ></p>
+            </div>
+
+            <div class="field"></div>
+          </form>
+        </section>
+      </div>
+    </dialog>
   </body>
 </html>
