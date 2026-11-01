@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Baggy Lab | Streetwear Y2K oversize y baggy</title>
+    <meta
+      name="description"
+      content="Baggy Lab: pantalones baggy, prendas oversize y estampados anime para hombre y mujer. Streetwear Y2K con envíos a toda Colombia."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <!--
+      El checkbox es el control real del menú: recibe el foco del teclado
+      aunque esté oculto visualmente. El label abre y cierra el panel,
+      así el menú funciona sin JavaScript.
+    -->
+      <input
+        class="menu-toggle"
+        type="checkbox"
+        id="menu-toggle"
+        aria-label="Menú de navegación"
+      />
+
+      <div class="site-header__inner container">
+        <a class="logo" href="#">BAGGY <span class="logo__accent">LAB</span></a>
+
+        <label
+          class="site-header__menu-btn"
+          for="menu-toggle"
+          aria-label="Abrir menú de navegación"
+        >
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </label>
+
+        <nav class="site-header__nav" aria-label="Navegación principal">
+          <ul class="site-header__nav-list">
+            <li><a href="#catalogo">Nuevos ingresos</a></li>
+            <li><a href="#">Mujer</a></li>
+            <li><a href="#">Hombre</a></li>
+            <li><a href="#ofertas">Ofertas</a></li>
+            <li><a href="#">Calzado y gorras</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <nav class="menu-panel" aria-label="Menú desplegado">
+        <div class="menu-panel__header">
+          <a class="logo" href="#"
+            >BAGGY <span class="logo__accent">LAB</span></a
+          >
+          <label
+            class="menu-panel__close"
+            for="menu-toggle"
+            aria-label="Cerrar menú de navegación"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </label>
+        </div>
+
+        <ul class="menu-panel__list">
+          <li class="menu-panel__item">
+            <a class="menu-panel__link" href="#catalogo">
+              <span class="menu-panel__text">Nuevos ingresos</span>
+              <span class="chip chip--solid menu-panel__badge">NUEVO</span>
+              <svg
+                class="menu-panel__chevron"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M9 6l6 6-6 6" />
+              </svg>
+            </a>
+          </li>
+          <li class="menu-panel__item">
+            <a class="menu-panel__link" href="#">
+              <span class="menu-panel__text">Mujer</span>
+              <svg
+                class="menu-panel__chevron"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M9 6l6 6-6 6" />
+              </svg>
+            </a>
+          </li>
+          <li class="menu-panel__item">
+            <a class="menu-panel__link" href="#">
+              <span class="menu-panel__text">Hombre</span>
+              <svg
+                class="menu-panel__chevron"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M9 6l6 6-6 6" />
+              </svg>
+            </a>
+          </li>
+          <li class="menu-panel__item">
+            <a class="menu-panel__link" href="#ofertas">
+              <span class="menu-panel__text">Ofertas</span>
+              <span class="chip chip--solid menu-panel__badge">-30%</span>
+              <svg
+                class="menu-panel__chevron"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M9 6l6 6-6 6" />
+              </svg>
+            </a>
+          </li>
+          <li class="menu-panel__item">
+            <a class="menu-panel__link" href="#">
+              <span class="menu-panel__text">Calzado y gorras</span>
+              <svg
+                class="menu-panel__chevron"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M9 6l6 6-6 6" />
+              </svg>
+            </a>
+          </li>
+          <li class="menu-panel__item">
+            <a class="menu-panel__link" href="#">
+              <span class="menu-panel__text">Contacto</span>
+              <svg
+                class="menu-panel__chevron"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M9 6l6 6-6 6" />
+              </svg>
+            </a>
+          </li>
+        </ul>
+
+        <div class="menu-panel__footer">
+          <a class="btn btn--primary btn--block" href="#">Ver mi carrito</a>
+          <p class="menu-panel__note">Envíos a toda Colombia</p>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero__inner container">
+          <p class="chip chip--outline hero__chip">COLECCIÓN Y2K 2026</p>
+
+          <h1 class="hero__title">
+            <span class="hero__title-line">Viste ancho.</span>
+            <span class="hero__title-line"
+              >Piensa <span class="hero__title-accent">grande.</span></span
+            >
+          </h1>
+
+          <p class="hero__text">
+            Pantalones baggy, oversize y estampados anime para hombre y mujer.
+            Streetwear con actitud deportiva.
+          </p>
+
+          <div class="hero__media">
+            <p class="hero__media-title">DROP 01</p>
+            <p class="hero__media-caption">Foto de campaña</p>
+          </div>
+
+          <a class="btn btn--primary btn--block hero__cta" href="#catalogo"
+            >Ver colección</a
+          >
+        </div>
+      </section>
+
+      <section class="offers section" id="ofertas">
+        <div class="container">
+          <div class="section-head">
+            <h2 class="section-head__title">Ofertas</h2>
+            <span class="chip chip--solid">HASTA -30%</span>
+          </div>
+
+          <div class="offers__grid">
+            <article class="offer-card grad--hoodie">
+              <div class="offer-card__media">
+                <span class="chip chip--solid offer-card__badge">-30%</span>
+                <span class="offer-card__placeholder">Foto hoodie</span>
+              </div>
+              <div class="offer-card__body">
+                <h3 class="offer-card__title">Hoodie oversize</h3>
+                <p class="offer-card__old-price">$ 139.900</p>
+                <p class="offer-card__price">$ 97.900</p>
+                <button
+                  class="btn btn--primary btn--sm btn--block"
+                  type="button"
+                >
+                  Agregar
+                </button>
+              </div>
+            </article>
+
+            <article class="offer-card grad--gorra">
+              <div class="offer-card__media">
+                <span class="chip chip--solid offer-card__badge">-30%</span>
+                <span class="offer-card__placeholder">Foto gorra</span>
+              </div>
+              <div class="offer-card__body">
+                <h3 class="offer-card__title">Gorra trucker</h3>
+                <p class="offer-card__old-price">$ 59.900</p>
+                <p class="offer-card__price">$ 41.900</p>
+                <button
+                  class="btn btn--primary btn--sm btn--block"
+                  type="button"
+                >
+                  Agregar
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="catalog section" id="catalogo">
+        <div class="container">
+          <div class="section-head">
+            <h2 class="section-head__title">Todo el drop</h2>
+            <p class="section-head__meta">8 productos</p>
+          </div>
+
+          <div class="catalog__grid">
+            <article class="product-card grad--camiseta">
+              <div class="product-card__media">
+                <span class="chip chip--tag product-card__tag">NUEVO</span>
+                <span class="product-card__placeholder">Foto: camiseta</span>
+              </div>
+              <div class="product-card__body">
+                <h3 class="product-card__title">Camiseta oversize anime</h3>
+                <p class="product-card__desc">
+                  Algodón pesado con estampado anime. Unisex.
+                </p>
+                <p class="product-card__price">$ 89.900</p>
+                <button
+                  class="btn btn--primary btn--block product-card__btn"
+                  type="button"
+                >
+                  Agregar al carrito
+                </button>
+              </div>
+            </article>
+
+            <article class="product-card grad--baggy">
+              <div class="product-card__media">
+                <span class="chip chip--tag product-card__tag">MUJER</span>
+                <span class="product-card__placeholder">Foto: baggy jean</span>
+              </div>
+              <div class="product-card__body">
+                <h3 class="product-card__title">Baggy jean Y2K</h3>
+                <p class="product-card__desc">
+                  Tiro bajo y pierna ancha. Colección mujer.
+                </p>
+                <p class="product-card__price">$ 159.900</p>
+                <button
+                  class="btn btn--primary btn--block product-card__btn"
+                  type="button"
+                >
+                  Agregar al carrito
+                </button>
+              </div>
+            </article>
+
+            <article class="product-card grad--cargo">
+              <div class="product-card__media">
+                <span class="chip chip--tag product-card__tag">HOMBRE</span>
+                <span class="product-card__placeholder"
+                  >Foto: pantalón cargo</span
+                >
+              </div>
+              <div class="product-card__body">
+                <h3 class="product-card__title">Pantalón cargo</h3>
+                <p class="product-card__desc">
+                  Bolsillos laterales y corte relajado. Colección hombre.
+                </p>
+                <p class="product-card__price">$ 149.900</p>
+                <button
+                  class="btn btn--primary btn--block product-card__btn"
+                  type="button"
+                >
+                  Agregar al carrito
+                </button>
+              </div>
+            </article>
+
+            <article class="product-card grad--hoodie">
+              <div class="product-card__media">
+                <span class="chip chip--tag product-card__tag">-30%</span>
+                <span class="product-card__placeholder">Foto: hoodie</span>
+              </div>
+              <div class="product-card__body">
+                <h3 class="product-card__title">Hoodie oversize</h3>
+                <p class="product-card__desc">
+                  Capota doble y felpa interna. Unisex.
+                </p>
+                <p class="product-card__price">$ 139.900</p>
+                <button
+                  class="btn btn--primary btn--block product-card__btn"
+                  type="button"
+                >
+                  Agregar al carrito
+                </button>
+              </div>
+            </article>
+
+            <article class="product-card grad--gorra">
+              <div class="product-card__media">
+                <span class="chip chip--tag product-card__tag">-30%</span>
+                <span class="product-card__placeholder">Foto: gorra</span>
+              </div>
+              <div class="product-card__body">
+                <h3 class="product-card__title">Gorra trucker con parche</h3>
+                <p class="product-card__desc">
+                  Malla trasera y parche bordado.
+                </p>
+                <p class="product-card__price">$ 59.900</p>
+                <button
+                  class="btn btn--primary btn--block product-card__btn"
+                  type="button"
+                >
+                  Agregar al carrito
+                </button>
+              </div>
+            </article>
+
+            <article class="product-card grad--tenis">
+              <div class="product-card__media">
+                <span class="chip chip--tag product-card__tag">TENDENCIA</span>
+                <span class="product-card__placeholder">Foto: tenis</span>
+              </div>
+              <div class="product-card__body">
+                <h3 class="product-card__title">Tenis chunky</h3>
+                <p class="product-card__desc">
+                  Suela alta y amortiguación para todo el día.
+                </p>
+                <p class="product-card__price">$ 229.900</p>
+                <button
+                  class="btn btn--primary btn--block product-card__btn"
+                  type="button"
+                >
+                  Agregar al carrito
+                </button>
+              </div>
+            </article>
+
+            <article class="product-card grad--medias">
+              <div class="product-card__media">
+                <span class="chip chip--tag product-card__tag">PACK x3</span>
+                <span class="product-card__placeholder">Foto: medias</span>
+              </div>
+              <div class="product-card__body">
+                <h3 class="product-card__title">Medias altas</h3>
+                <p class="product-card__desc">
+                  Pack de 3 pares con logo tejido.
+                </p>
+                <p class="product-card__price">$ 24.900</p>
+                <button
+                  class="btn btn--primary btn--block product-card__btn"
+                  type="button"
+                >
+                  Agregar al carrito
+                </button>
+              </div>
+            </article>
+
+            <article class="product-card grad--bomber">
+              <div class="product-card__media">
+                <span class="chip chip--tag product-card__tag">NUEVO</span>
+                <span class="product-card__placeholder">Foto: bomber</span>
+              </div>
+              <div class="product-card__body">
+                <h3 class="product-card__title">Bomber Y2K</h3>
+                <p class="product-card__desc">
+                  Satín metalizado con forro liviano.
+                </p>
+                <p class="product-card__price">$ 199.900</p>
+                <button
+                  class="btn btn--primary btn--block product-card__btn"
+                  type="button"
+                >
+                  Agregar al carrito
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner container">
+        <div class="site-footer__brand">
+          <p class="logo">BAGGY <span class="logo__accent">LAB</span></p>
+          <p class="site-footer__slogan">
+            Streetwear Y2K para la generación que viste ancho.
+          </p>
+        </div>
+
+        <div class="site-footer__columns">
+          <ul class="site-footer__list">
+            <li><a href="#">Tienda</a></li>
+            <li><a href="#ofertas">Ofertas</a></li>
+            <li><a href="#catalogo">Nuevos ingresos</a></li>
+          </ul>
+          <ul class="site-footer__list">
+            <li><a href="#">Envíos</a></li>
+            <li><a href="#">Cambios</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </div>
+
+        <ul class="site-footer__social">
+          <li><a class="site-footer__pill" href="#">Instagram</a></li>
+          <li><a class="site-footer__pill" href="#">TikTok</a></li>
+          <li><a class="site-footer__pill" href="#">WhatsApp</a></li>
+        </ul>
+
+        <div class="site-footer__legal">
+          <p>© 2026 Baggy Lab. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
