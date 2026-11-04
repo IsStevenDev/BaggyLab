@@ -43,6 +43,17 @@ Luego entra a la dirección que indique la consola.
 ```
 index.html
 src/
+  assets/
+      img/
+        bomber.webp
+        camisa.webp
+        cargo.webp
+        gorra.webp
+        hero-banner.webp  Imagenes Utilizados en el Drop
+        hoodie.webp
+        medias.webp
+        pantalon baggy.webp
+        tenis.webp
   css/
     styles.css        Estilos base, layout y diseño de componentes
     motion.css        Animaciones y transiciones
