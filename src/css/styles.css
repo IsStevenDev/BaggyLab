@@ -383,6 +383,7 @@ a.logo {
 }
 
 .hero__media {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -391,17 +392,34 @@ a.logo {
   width: 100%;
   height: 210px;
   border-radius: 24px;
+  overflow: hidden;
   background-image: linear-gradient(135deg, #7b2ff7 0%, #0097b2 100%);
 }
 
+/* La imagen actúa como fondo de la tarjeta: cubre toda la caja sin
+   deformarse (object-fit) y por debajo del texto (z-index) */
+.banner-img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .hero__media-title {
+  position: relative;
+  z-index: 1;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 3.5rem;
   line-height: 1;
+  text-shadow: 0 2px 18px rgba(10, 10, 15, 0.55);
 }
 
 .hero__media-caption {
+  position: relative;
+  z-index: 1;
   font-size: 0.8125rem;
   color: rgba(255, 255, 255, 0.9);
 }
@@ -439,10 +457,21 @@ a.logo {
   left: 10px;
 }
 
+/* El placeholder ocupa toda la caja de media y la imagen lo llena:
+   width/height al 100% + object-fit cover recortan la foto al marco
+   en cualquier ancho de tarjeta, de modo que nunca se sale ni tapa el texto */
 .offer-card__placeholder,
 .product-card__placeholder {
-  font-size: 0.8125rem;
-  color: rgba(255, 255, 255, 0.9);
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.offer-card__media img,
+.product-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .offer-card__body {
